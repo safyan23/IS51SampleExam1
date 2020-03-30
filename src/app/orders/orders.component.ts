@@ -3,6 +3,14 @@ import { Router } from '@angular/router';
 import { FlexModalService } from '../shared-components/flex-modal/flex-modal.service';
 import { Http } from '@angular/http';
 
+interface IOrder {
+  pid: string;
+  image: string;
+  description: string;
+  quantity: number;
+  price: number;
+}
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -11,7 +19,7 @@ import { Http } from '@angular/http';
 
 export class OrdersComponent implements OnInit {
 
-  orders: Array<any> = [];
+  orders: Array<IOrder> = [];
   name = '';
   errorMessage = '';
   confirmMessage = '';
@@ -123,6 +131,10 @@ export class OrdersComponent implements OnInit {
         });
         break;
     }
+  }
+
+  clear() {
+    this.orders = [];
   }
 
 }
